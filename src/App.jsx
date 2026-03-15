@@ -11,7 +11,7 @@ function App() {
   const [finished, setFinished] = useState(true);
 
   useEffect(() => {
-    let todos = JSON.parse(localStorage.getItem("todos"));
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(todos);
   }, [])
 
@@ -106,7 +106,7 @@ function App() {
         <hr className='border text-gray-500 mt-0.5 mb-1' />
         <h2 className='text-lg font-bold'>Your Todos📝</h2>
         <div className="todos">
-          {todos.length == 0 && <div className=''>No Todos to Display</div>}
+          {todos.length === 0 && <div className=''>No Todos to Display</div>}
           {
             todos.map(item => {
               return ((finished || !item.isCompleted) &&
